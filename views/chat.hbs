@@ -1,0 +1,56 @@
+<!-- views/chat.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Companion Chat</title>
+    <style>
+        .chat-container { max-width: 600px; margin: auto; padding: 20px; }
+        .message { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .user { background-color: #d1e7dd; text-align: right; }
+        .bot { background-color: #f8d7da; text-align: left; }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Companion Chat</h1>
+        <div id="chat-messages"></div>
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type a message..." required style="width: 80%;">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('chat-form');
+        const chatMessages = document.getElementById('chat-messages');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const userInput = document.getElementById('user-input').value;
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.innerHTML = userInput;
+            chatMessages.appendChild(userMessage);
+
+            const response = await fetch('/chat/message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userInput })
+            });
+
+            const data = await response.json();
+
+            const botMessage = document.createElement('div');
+            botMessage.className = 'message bot';
+            botMessage.innerHTML = data.reply; // Display formatted bot response with HTML
+            chatMessages.appendChild(botMessage);
+
+            document.getElementById('user-input').value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        });
+    </script>
+</body>
+</html>

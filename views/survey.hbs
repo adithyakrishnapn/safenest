@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+</head>
+<body>
+    <h1>Women Empowerment Survey</h1>
+    <form action="/survey/submit" method="POST">
+        <label for="question1">How confident are you in facing difficult situations?</label>
+        <input type="text" id="question1" name="answers[0]" required>
+        
+        <label for="question2">What would be your first reaction in an emergency situation?</label>
+        <input type="text" id="question2" name="answers[1]" required>
+
+        <label for="question3">How do you handle stress in a high-pressure environment?</label>
+        <input type="text" id="question3" name="answers[2]" required>
+
+        <label for="question4">Do you believe women have equal opportunities in the workplace?</label>
+        <input type="text" id="question4" name="answers[3]" required>
+
+        <label for="question5">What does empowerment mean to you?</label>
+        <input type="text" id="question5" name="answers[4]" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,142 @@
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.search-bar {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* input{
+    margin-top: 10px;
+    margin-left: 0px; 
+    width: 100%;
+    
+    height: auto; 
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    border: 0px solid transparent;
+    padding: 10px;
+    background-color: #464242;
+     
+} */
+
+body{
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+    border-left: 0px;
+    background-color: black;
+    color:white;
+}
+
+
+#one{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+#bod{
+    
+    height: 250px;
+    width: 50%;
+    font-family: "Roboto", sans-serif;
+    font-size: medium;
+    border: 0px solid transparent;
+    padding: 10px;
+    background-color: #464242;
+    border-radius: 5px;
+}
+    
+
+#title{
+    height: 150px;
+    width: 50%;
+    font-family: "Roboto", sans-serif;
+    font-size: large;
+    border: 0px solid transparent;
+    padding: 10px;
+    background-color: #464242;
+    border-radius: 5px;
+}
+#two{
+    margin-top: 10px;
+}
+#three{
+    margin-top: 30px;
+}
+label{
+    display: block;
+    margin-bottom: 10px; /* Adjust the value as needed */
+    color: white; 
+}
+button{
+    padding: 12px 25px;
+    background-color: #f1675c;
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 21%;
+    justify-items: center;
+}
+
+/* Style for the file upload button */
+input[type="file"] {
+    font-family: "Roboto", sans-serif;
+    font-size: medium;
+    padding: 10px;
+    background-color: #464242; /* Matches the color of other input fields */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 50%;
+}
+.main{
+    margin-left: 30%;
+
+}
+    
