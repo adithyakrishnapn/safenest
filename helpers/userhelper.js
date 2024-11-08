@@ -97,6 +97,20 @@ module.exports = {
             });
         });
       },
+
+      FetchArticlesById : (id) =>{
+        return new Promise((resolve,reject)=>{
+
+          objectId = new ObjectId(id);
+
+          db.get().collection('articles').findOne({_id : objectId}).then((response)=>{
+            resolve(response);
+          })
+        }).catch(err=>{
+          console.error(err);
+          reject(err);
+        })
+      }
       
       
 }

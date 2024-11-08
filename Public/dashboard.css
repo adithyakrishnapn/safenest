@@ -172,3 +172,59 @@ button, .chatbot {
     color: #ccc;
     text-align: center;
 }
+
+ /* Style for the SOS button */
+ .sos-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e74c3c;  /* Red background */
+    color: white;  /* White text */
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.sos-button:hover {
+    background-color: #c0392b;  /* Darker red */
+}
+
+/* Focus effect (accessibility) */
+.sos-button:focus {
+    outline: 3px solid #f39c12;
+}
+
+/* Optional icon style (if you want an icon instead of text) */
+.sos-button i {
+    font-size: 32px;  /* Larger icon size */
+}   
+
+.info{
+    margin-top: 100px;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 150px;
+    font-weight: lighter;
+}
+.picc{
+    height: 500px;
+    width: 600px;
+}
+.para{
+    height: 50%;
+    width: 50%;
+}

@@ -1,16 +1,132 @@
-<!-- views/surveyResult.hbs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survey Results</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: "Oswald", sans-serif;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+            display: flex;
+            flex-direction: column; /* Ensures everything stacks vertically */
+            align-items: center;
+            justify-content: flex-start; /* Aligns content to the top */
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0; /* Add padding at top and bottom */
+            text-align: center;
+            box-sizing: border-box;
+        }
+        
+        .result-container {
+            background-color: #333;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
+            margin-bottom: 30px; /* Adds space after content */
+        }
+        
+        h1 {
+            color: #f1675c;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 18px;
+            color: #ddd;
+            margin: 10px 0;
+        }
+        
+        /* Score Styling */
+        .score {
+            font-size: 24px;
+            color: #ffdd57;
+            font-weight: bold;
+        }
+        
+        /* Feedback Message */
+        .feedback-message {
+            font-style: italic;
+            color: #a8dadc;
+            margin-top: 10px;
+        }
+        
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #f1675c;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #ff786d;
+        }
+
+        /* YouTube Video Section */
+        .video-section {
+            margin-top: 30px;
+        }
+
+        .video-section h2 {
+            color: #f1675c;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .video-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .video {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .video iframe {
+            width: 100%;
+            height: 270px;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Survey Results</h1>
-    <p>Your Strength Score: {{score}}</p>
-    <p>Feedback: {{message}}</p>
-    
-    <a href="/survey">Take the survey again</a>
+    <div class="result-container">
+        <h1>Survey Results</h1>
+        <p>Your Strength Score: <span class="score">{{score}}</span></p>
+        <p class="feedback-message">Feedback: "{{message}}"</p>
+        
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2>Recommended Videos for You</h2>
+            <div class="video-container">
+                {{#each videoResults}}
+                <div class="video">
+                    <iframe src="https://www.youtube.com/embed/{{this.videoId}}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <a href="/survey" class="btn">Take the Survey Again</a>
+    </div>
 </body>
 </html>

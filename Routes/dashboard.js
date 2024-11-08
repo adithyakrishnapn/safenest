@@ -4,12 +4,30 @@ const helper = require('../helpers/userhelper');
 
 
 
-router.get('/',(req,res)=>{
-    res.render('dashboard');
+router.get("/help",(req,res)=>{
+  res.render('help');
+})
+router.get("/about",(req,res)=>{
+  res.render('aboutus');
 })
 
-router.get("/community",(req,res)=>{
-    res.render('communityForum');
+router.get("/community",async(req,res)=>{
+  try {
+    let articles = await helper.FetchArticles();
+    console.log(articles); // This will log all articles fetched from the database
+    res.render('community-forum', { articles });
+} catch (err) {
+    console.error("Error fetching articles:", err);
+    res.status(500).send("Error fetching articles");
+}
+})
+
+router.get("/communityPost",(req,res)=>{
+  res.render('community');
+})
+
+router.get("/contact",(req,res)=>{
+  res.render('contact');
 })
 
 
@@ -17,6 +35,7 @@ router.post("/community", (req, res) => {
     console.log(req.body);
     // Extract text and image file from the request
     const details = {
+      username: req.session.user.username,
       email: req.session.mail,
       title: req.body.Title,
       content: req.body.communityText, // Ensure 'communityText' matches the input name in your form
@@ -43,7 +62,7 @@ router.post("/community", (req, res) => {
           console.log("No image found.");
         }
         
-        res.redirect("/dashboard");
+        res.redirect("/");
       })
       .catch((error) => {
         console.log("Error posting article:", error);
@@ -62,6 +81,17 @@ router.get('/resources', async (req, res) => {
         res.status(500).send("Error fetching articles");
     }
 });
+
+router.get('/view:id',async(req,res)=>{
+  try{
+    let id =req.params.id;
+    let view = await helper.FetchArticlesById(id);
+    console.log(view);
+    res.render('view',{view});
+  } catch(err){
+    console.log(err)
+  }
+})
 
 
 

@@ -1,0 +1,133 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and layout settings */
+body {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+    background-color:black;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: black;
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container{
+    background-color: black;
+}
+
+header h1 {
+    font-size: 28px;
+}
+
+nav ul {
+    list-style: none;
+}
+#butt{
+    margin-top: 40px;
+    background-color: #f1675c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bolder;
+    height: 60px;
+    font-family:"Oswald", sans-serif;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Resources Section */
+.resources {
+    background-color: black;
+    padding: 50px 0;
+}
+
+.resources h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #f1675c;
+}
+
+.resource-card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.resource-card h3 {
+    font-size: 24px;
+    color: #f1675c;
+}
+
+.resource-card p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.resource-card .btn {
+    background-color: #f1675c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.resource-card .btn:hover {
+    background-color: #e15854;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    padding:  0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#head{
+    color: #e15854;
+    font-weight:bolder;
+    margin-bottom: 40px;
+    font-size: 35px;
+}
+
+.help{
+    margin: 50px;
+    text-align: center;
+    
+}

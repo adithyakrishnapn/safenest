@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - SafeNest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+    background-color: #111;
+    color: #f1f1f1;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #f1675c;
+    margin-bottom: 20px;
+}
+
+.help-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #f1675c;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+ul li {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    position: relative;
+}
+
+ul li::before {
+    content: "•";
+    color: #f1675c;
+    font-size: 1.5em;
+    position: absolute;
+    left: -20px;
+    top: -2px;
+}
+
+.help-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #f1675c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.help-btn:hover {
+    background-color: #f14d3c;
+}
+
+strong {
+    color: #f1c40f;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    p, ul li {
+        font-size: 0.9em;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <h1>Help</h1>
+    </header>
+
+    <main class="help-section">
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <ul>
+                <li><strong>How do I create an account?</strong> – You can create an account by clicking the "Sign Up" button on the login page and following the instructions.</li>
+                <li><strong>How do I reset my password?</strong> – Click "Forgot Password" on the login page and follow the prompts to reset your password.</li>
+                <li><strong>How do I access healthcare guidance?</strong> – Navigate to the "Healthcare" section where you’ll find health tips and resources specifically curated for teenage girls.</li>
+            </ul>
+        </section>
+
+        <section class="contact-support">
+            <h2>Contact Support</h2>
+            <p>If you need further assistance, please reach out to our support team. We’re here to help you with any issues you may encounter.</p>
+            <button class="help-btn">Contact Support</button>
+        </section>
+
+        <section class="safety">
+            <h2>Safety Resources</h2>
+            <p>At SafeNest, your safety is our top priority. Please visit our <a href="#safety-guidelines" style="color: #f1675c; text-decoration: underline;">Safety Guidelines</a> page for essential tips on staying safe online and offline.</p>
+        </section>
+    </main>
+</body>
+</html>

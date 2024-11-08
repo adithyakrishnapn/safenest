@@ -1,19 +1,27 @@
+<!-- views/survey.hbs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survey</title>
+    <link rel="stylesheet" href="/survey.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Women Empowerment Survey</h1>
+    <h1>Welcome to the Personality Test!</h1>
+    <h4>
+        Understanding yourself can be the first step towards self-improvement and achieving personal goals. This test is designed to help you gain insights into your unique strengths, values, and tendencies.</h4>
     <form action="/survey/submit" method="POST">
         <label for="question1">How confident are you in facing difficult situations?</label>
         <input type="text" id="question1" name="answers[0]" required>
         
         <label for="question2">What would be your first reaction in an emergency situation?</label>
         <input type="text" id="question2" name="answers[1]" required>
-
+        
+        <!-- Add more questions as needed -->
         <label for="question3">How do you handle stress in a high-pressure environment?</label>
         <input type="text" id="question3" name="answers[2]" required>
 
@@ -23,6 +31,8 @@
         <label for="question5">What does empowerment mean to you?</label>
         <input type="text" id="question5" name="answers[4]" required>
 
+        
+        
         <button type="submit">Submit</button>
     </form>
 </body>

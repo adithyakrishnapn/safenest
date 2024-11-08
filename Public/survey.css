@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    
+    font-style: normal;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #f1675c;
+    margin-bottom: 10px;
+}
+
+h4 {
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 20px;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+form {
+    width: 100%;
+    max-width: 600px;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form label {
+    display: block;
+    font-size: 1.1em;
+    color: #f1675c;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    color: white;
+    background-color: #444;
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+form input[type="text"]:focus {
+    border-color: #f1675c;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background-color: #f1675c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d4564f;
+}
+/* Ensures all elements stack vertically */
+body, form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ensures each label and input stack vertically within the form */
+form label, form input {
+    width: 100%; /* Full width inside the form */
+}
+
+/* Style updates for readability */
+h1, h4 {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
