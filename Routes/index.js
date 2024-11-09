@@ -3,13 +3,31 @@ const router = express.Router();
 const helper = require('../helpers/userhelper');
 const twilioClient = require('../Config/twilio');
 
+
+const loggedin = (req,res,next)=>{
+    if(req.session.loggedIn){
+        next()
+    } else {
+        res.redirect('/login')
+    }
+}
+
+const logcheck = (req,res,next)=>{
+    if(req.session.loggedIn){
+        redirect('/')
+    } else{
+        next();
+    }
+}
+
 router.get('/',(req,res)=>{
-    res.render('index');
+    let user = req.session.loggedIn;
+    res.render('index',{user});
 })
-router.get('/login',(req,res)=>{
+router.get('/login', logcheck,(req,res)=>{
     res.render('login');
 })
-router.get('/signup',(req,res)=>{
+router.get('/signup', logcheck,(req,res)=>{
     res.render('signup');
 })
 
@@ -74,6 +92,17 @@ router.post('/sos', async (req, res) => {
         console.error('Error sending SOS message:', error);
         res.status(500).json({ success: false, message: 'Failed to send SOS message.' });
     }
+});
+
+router.get('/logout', (req, res) => {
+    req.session.loggedIn =false;
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).send("Error logging out. Please try again.");
+        }
+        // Redirecting to the login page or home page after logout
+        res.redirect('/login');
+    });
 });
 
   

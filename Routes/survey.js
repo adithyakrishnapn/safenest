@@ -2,8 +2,18 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
+
+const loggedin = (req,res,next)=>{
+    if(req.session.loggedIn){
+        next()
+    } else {
+        res.redirect('/login')
+    }
+}
+
+
 // Route to display the survey form
-router.get('/', (req, res) => {
+router.get('/', loggedin,(req, res) => {
     res.render('survey');  // Render the survey form in Handlebars (survey.hbs)
 });
 

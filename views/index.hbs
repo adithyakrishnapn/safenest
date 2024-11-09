@@ -23,7 +23,11 @@
                     <li><a href="/dashboard/contact">Contact Us</a></li>
                     <li><a href="/dashboard/about">About Us</a></li>
                     <li><a href="/dashboard/help">Help</a></li>
+                    {{#if user}}
+                    <li><a href="/logout">logout</a></li>
+                    {{else}}
                     <li><a href="/login">Login</a></li>
+                    {{/if}}
                 </ul>
             </nav>
         </div>

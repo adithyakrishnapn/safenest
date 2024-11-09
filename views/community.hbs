@@ -18,10 +18,13 @@
             <nav>
                 <ul>
                     
-                    <li><a href="#resources">Home</a></li>
-                    <li><a href="#community">Contact Us</a></li>
-                    <li><a href="#ai-guidance">About Us</a></li>
-                    <li><a href="#emergency">Help</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/dashboard/contact">Contact Us</a></li>
+                    <li><a href="/dashboard/about">About Us</a></li>
+                    <li><a href="/dashboard/help">Help</a></li>
+                    {{#if user}}
+                    <li><a href="/logout">logout</a></li>
+                    {{/if}}
                     <!-- <li><a href="#about">Login</a></li> -->
                 </ul>
             </nav>

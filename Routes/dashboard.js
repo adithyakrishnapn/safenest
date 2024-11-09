@@ -4,30 +4,42 @@ const helper = require('../helpers/userhelper');
 
 
 
-router.get("/help",(req,res)=>{
+const loggedin = (req,res,next)=>{
+  if(req.session.loggedIn){
+      next()
+  } else {
+      res.redirect('/login')
+  }
+}
+
+
+router.get("/help", (req,res)=>{
   res.render('help');
 })
-router.get("/about",(req,res)=>{
+router.get("/about", (req,res)=>{
   res.render('aboutus');
 })
 
-router.get("/community",async(req,res)=>{
+router.get("/community", loggedin, async(req,res)=>{
   try {
+    let user = req.session.loggedIn;
     let articles = await helper.FetchArticles();
     console.log(articles); // This will log all articles fetched from the database
-    res.render('community-forum', { articles });
+    res.render('community-forum', { articles, user});
 } catch (err) {
     console.error("Error fetching articles:", err);
     res.status(500).send("Error fetching articles");
 }
 })
 
-router.get("/communityPost",(req,res)=>{
-  res.render('community');
+router.get("/communityPost", loggedin, (req,res)=>{
+  let user = req.session.loggedIn;
+  res.render('community',{user});
 })
 
 router.get("/contact",(req,res)=>{
-  res.render('contact');
+  let user = req.session.loggedIn;
+  res.render('contact',{user});
 })
 
 
