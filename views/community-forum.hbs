@@ -4,34 +4,167 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educational Resources</title>
-    <link rel="stylesheet" href="/educational.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    
+    <!-- Internal CSS Styles -->
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header and Navbar Styles */
+        header {
+            background-color: #111;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        header h1 {
+            font-weight: 700;
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Mobile-Friendly Navbar */
+        .navbar-toggle {
+            display: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                background-color: #111;
+                padding: 10px;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                border-radius: 8px;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+
+            .navbar-open nav ul {
+                display: flex;
+            }
+        }
+
+        /* Page Content */
+        .help h2 {
+            font-weight: 600;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .help p {
+            color: #b3b3b3;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        #head {
+            font-size: 28px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .btn {
+            font-weight: 600;
+            border-radius: 8px;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-outline-primary {
+            color: #007bff;
+            border: 1px solid #007bff;
+        }
+
+        .resources {
+            margin: 20px 0;
+        }
+
+        .resource-card {
+            border: 1px solid #444;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #111;
+            color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            background-color: #111;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>SafeNest</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/dashboard/contact">Contact Us</a></li>
-                    <li><a href="/dashboard/about">About Us</a></li>
-                    <li><a href="/dashboard/help">Help</a></li>
-                    {{#if user}}
-                    <li><a href="/logout">logout</a></li>
-                    {{/if}}
-                    <!-- <li><a href="login.html">Login</a></li> -->
-                </ul>
-            </nav>
-        </div>
+        <h1>SafeNest</h1>
+        <span class="navbar-toggle" onclick="toggleNavbar()">&#9776;</span>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard/contact">Contact Us</a></li>
+                <li><a href="/dashboard/about">About Us</a></li>
+                <li><a href="/dashboard/help">Help</a></li>
+                {{#if user}}
+                <li><a href="/logout">Logout</a></li>
+                {{/if}}
+            </ul>
+        </nav>
     </header>
 
     <div class="help">
         <h2 id="head">Post Your Experience Here – We're Here to Listen and Help</h2>
-        <p style="color: #969695; font-size: 32px;">At SafeNest, we understand that life can sometimes feel overwhelming, and everyone faces challenges, big or small. Whether you're dealing with stress, confusion, relationship difficulties, or anything else, you're not alone. We're here to provide a safe space for you to express your thoughts and receive the support you deserve.</p>
-        <a href="/dashboard/communityPost"><button id="butt">POST NOW !!!</button></a>
+        <p>At SafeNest, we understand that life can sometimes feel overwhelming, and everyone faces challenges, big or small. Whether you're dealing with stress, confusion, relationship difficulties, or anything else, you're not alone. We're here to provide a safe space for you to express your thoughts and receive the support you deserve.</p>
+        <a href="/dashboard/communityPost" class="btn btn-primary">POST NOW !!!</a>
     </div>
     
     <section class="resources">
@@ -41,7 +174,7 @@
             <div class="resource-card">
                 <h3>{{this.title}}</h3>
                 <p>by ~ {{this.username}}</p>
-                <a href="/dashboard/view{{this._id}}" class="btn">Read More</a>
+                <a href="/dashboard/view{{this._id}}" class="btn btn-outline-primary">Read More</a>
             </div>
             {{/each}}
         </div>
@@ -52,5 +185,11 @@
             <p>&copy; 2024 SafeNest. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        function toggleNavbar() {
+            document.body.classList.toggle('navbar-open');
+        }
+    </script>
 </body>
 </html>
