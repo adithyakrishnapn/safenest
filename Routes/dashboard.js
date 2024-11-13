@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const helper = require('../helpers/userhelper');
-
+const axios = require('axios');
+const youtubeApiKey = 'AIzaSyBgc4MjhcdoMuHyBJjagdfGKf-DL9TLUBY'; // Replace with your YouTube API key
 
 
 const loggedin = (req,res,next)=>{
@@ -83,16 +84,44 @@ router.post("/community", (req, res) => {
 });
   
 
+
 router.get('/resources', async (req, res) => {
     try {
+        // Fetch articles from the database
         let articles = await helper.FetchArticles();
-        console.log(articles); // This will log all articles fetched from the database
-        res.render('er', { articles });
+        console.log(articles); // Log fetched articles
+
+        // Define a search query for YouTube videos related to women’s empowerment, self-defense, etc.
+        const searchQuery = "self-defense for women";
+        
+        // Fetch YouTube videos related to the search query
+        const youtubeResponse = await axios.get(`https://www.googleapis.com/youtube/v3/search`, {
+            params: {
+                part: 'snippet',
+                q: searchQuery,
+                type: 'video',
+                key: youtubeApiKey,
+                maxResults: 3
+            }
+        });
+
+        // Format the YouTube video data for easier use in the template
+        const videoResults = youtubeResponse.data.items.map(item => ({
+            title: item.snippet.title,
+            videoId: item.id.videoId,
+            thumbnail: item.snippet.thumbnails.default.url
+        }));
+
+        // Render the `er` page with both articles and YouTube video recommendations
+        res.render('er', { articles, videoResults });
     } catch (err) {
-        console.error("Error fetching articles:", err);
-        res.status(500).send("Error fetching articles");
+        console.error("Error fetching articles or YouTube videos:", err.response ? err.response.data : err.message);
+        res.status(500).send("Error fetching resources.");
     }
 });
+
+module.exports = router;
+
 
 router.get('/view:id',async(req,res)=>{
   try{

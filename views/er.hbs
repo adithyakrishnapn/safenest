@@ -5,44 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educational Resources</title>
     <link rel="stylesheet" href="/educational.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>SafeNest</h1>
-            <nav>
-                <ul>
-                    <li><a href="#resources">Home</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="help.html">Help</a></li>
-                    <!-- <li><a href="login.html">Login</a></li> -->
-                </ul>
-            </nav>
-        </div>
+        <h1>SafeNest - Resources</h1>
     </header>
 
     <section class="resources">
-        <div class="container">
-            <h2>Featured Resources</h2>
-            {{#each articles}}
-            <div class="resource-card">
-                <h3>{{this.title}}</h3>
-                <p>by ~ {{this.username}}</p>
-                <a href="/dashboard/view{{this._id}}" class="btn">Read More</a>
-            </div>
-            {{/each}}
-        
+
+        <h2>Recommended Videos</h2>
+        {{#each videoResults}}
+        <div class="video-card">
+            <h3>{{this.title}}</h3>
+            <a href="https://www.youtube.com/watch?v={{this.videoId}}" target="_blank">
+                <img src="{{this.thumbnail}}" alt="{{this.title}}">
+            </a>
         </div>
+        {{/each}}
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 SafeNest. All Rights Reserved.</p>
-        </div>
+        <p>&copy; 2024 SafeNest. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
