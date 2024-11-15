@@ -5,35 +5,34 @@ const { ObjectId } = require("mongodb");
 
 
 module.exports = {
-    DoSignup: (data) => {
-        return new Promise(async (resolve, reject) => {
-            // Check if email already exists in the database
+  DoSignup: (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // Check if the email already exists in the database
             let existingUser = await db
                 .get()
                 .collection('users')
                 .findOne({ email: data.email });
-    
+
             if (existingUser) {
                 // If email exists, reject the promise with a specific error message
-                reject("Email already exists");
-                return;
+                return reject("Email already exists");
             }
-    
+
             // If email doesn't exist, proceed with the registration
             data.password = await bcrypt.hash(data.password, 10);
-            db.get()
-                .collection('users')
-                .insertOne(data)
-                .then((response) => {
-                    console.log("Registered successfully");
-                    resolve(response);
-                })
-                .catch((err) => {
-                    console.log("Error registering user");
-                    reject(err);
-                });
-        });
-    },
+            const result = await db.get().collection('users').insertOne(data);
+
+            console.log("Registered successfully");
+
+            // Return the new user's data to resolve the promise
+            resolve({ user: data, insertedId: result.insertedId });
+        } catch (err) {
+            console.log("Error registering user:", err);
+            reject("Error registering user");
+        }
+    });
+  },
 
     DoLogIn: (userData) => {
         return new Promise(async (resolve, reject) => {

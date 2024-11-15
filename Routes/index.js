@@ -39,7 +39,7 @@ router.post('/signup', (req, res) => {
             console.log("Registered as", req.body.username);
             req.session.loggedIn = true;
             req.session.user = response.user;
-            req.session.mail = response.user.email; // Assuming response.user.mail contains the user's email
+            req.session.mail = response.user.email; // Assuming email is provided in req.body
             console.log(response.user.email);
             res.redirect('/');
         })
@@ -49,6 +49,7 @@ router.post('/signup', (req, res) => {
             res.render('signup', { errorMessage: err });
         });
 });
+
 
 
 
